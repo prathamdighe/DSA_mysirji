@@ -99,5 +99,6 @@ void Array::del(int index)
         {
             ptr[index] = ptr[index + 1];
         }
+        lastIndex--;
     }
 }
