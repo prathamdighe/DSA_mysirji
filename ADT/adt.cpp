@@ -88,14 +88,14 @@ void Array::del(int index)
         cout << endl
              << "array is empty";
     }
-    else if (index > lastIndex)
+    else if (index<0 || index > lastIndex)
     {
         cout << endl
              << "the index is empty";
     }
     else
     {
-        for (i = index; i >= lastIndex; i++)
+        for (i = index; i < lastIndex; i++)
         {
             ptr[index] = ptr[index + 1];
         }
