@@ -14,6 +14,7 @@ class Array
         bool isFull();
         void append(int);
         void insert(int,int);
+        void edit(int,int);
 };
 
 
@@ -56,5 +57,11 @@ void Array::insert(int index,int data){
         }
         ptr[index]=data;
         lastIndex++;
+    }
+}
+
+void Array::edit(int index,int data){
+    if(index>=0&&index<=lastIndex){
+        ptr[index]=data;
     }
 }
