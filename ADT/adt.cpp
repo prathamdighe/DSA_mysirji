@@ -16,6 +16,10 @@ public:
     void insert(int, int);
     void edit(int, int);
     void del(int);
+    int get(int);
+    int count();
+    void printArray();
+    ~Array(); // destructor
 };
 
 Array::Array(int cap)
@@ -44,7 +48,7 @@ void Array::append(int data)
     else
     {
         lastIndex++;
-        ptr[lastIndex] == data;
+        ptr[lastIndex] = data;
     }
 }
 
@@ -81,6 +85,7 @@ void Array::edit(int index, int data)
 }
 
 void Array::del(int index)
+
 {
     int i = 0;
     if (isEmpty())
@@ -88,7 +93,7 @@ void Array::del(int index)
         cout << endl
              << "array is empty";
     }
-    else if (index<0 || index > lastIndex)
+    else if (index < 0 || index > lastIndex)
     {
         cout << endl
              << "the index is empty";
@@ -101,4 +106,61 @@ void Array::del(int index)
         }
         lastIndex--;
     }
+}
+
+int Array::get(int index)
+
+{
+    if (index >= 0 && index <= lastIndex)
+    {
+        return ptr[index];
+    }
+    else
+    {
+        cout << endl
+             << "invalid index";
+        return -1;
+    }
+}
+
+int Array::count()
+{
+    return lastIndex + 1;
+}
+
+void Array::printArray()
+{
+    for (int i = 0; i < lastIndex; i++)
+    {
+        cout
+            << ptr[i] << " ";
+    }
+    cout << endl;
+}
+
+Array::~Array()
+{
+    delete[] ptr;
+}
+
+int main()
+{
+    Array obj(5);
+    if (obj.isEmpty())
+        cout
+             << "array is empty"<<endl;
+
+    obj.append(20);
+    obj.append(40);
+    obj.append(60);
+    obj.insert(1, 30);
+
+    obj.printArray();
+
+    obj.del(2);
+    obj.printArray();
+
+    cout
+        << endl;
+    return 0;
 }
