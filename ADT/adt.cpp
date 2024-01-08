@@ -148,7 +148,7 @@ int main()
     Array obj(5);
     if (obj.isEmpty())
         cout
-             << "array is empty"<<endl;
+            << "array is empty" << endl;
 
     obj.append(20);
     obj.append(40);
