@@ -18,6 +18,7 @@ public:
     void del(int);
     int get(int);
     int count();
+    int find(int);
     void printArray();
     ~Array(); // destructor
 };
@@ -136,6 +137,19 @@ void Array::printArray()
             << ptr[i] << " ";
     }
     cout << endl;
+}
+
+int Array::find(int data)
+{
+    int i;
+    for (i = 0; i <= lastIndex; i++)
+    {
+        if (ptr[i] == data)
+        {
+            return i;
+        }
+    }
+    return -1;
 }
 
 Array::~Array()
