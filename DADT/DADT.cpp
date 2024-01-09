@@ -22,6 +22,7 @@ public:
     int count();
     void printArray();
     int find(int);
+    int currentCap();
     ~DynArray(); // destructor
 };
 
@@ -100,11 +101,51 @@ void DynArray::doubleArray()
     capacity = capacity * 2;
 }
 
-void DynArray::halfArray(){
-    int *temp=new int[capacity/2];
-    for (int i=0;i<=lastIndex;i++){
-        temp[i]=ptr[i];
+void DynArray::halfArray()
+{
+    int *temp = new int[capacity / 2];
+    for (int i = 0; i <= lastIndex; i++)
+    {
+        temp[i] = ptr[i];
     }
-    ptr=temp;
-    capacity/=2;
+    ptr = temp;
+    capacity /= 2;
+}
+
+int DynArray::currentCap()
+{
+    return capacity;
+}
+
+void DynArray::append(int data)
+{
+
+    if (isFull())
+    {
+        doubleArray();
+    }
+    ptr[lastIndex + 1] = data; //++lastindex no need of new line index++
+    lastIndex++;
+}
+
+void DynArray::insert(int index, int data)
+{
+    if (index < 0 || index >= lastIndex + 1)
+    {
+        cout << endl
+             << "index invalid";
+    }
+    else
+    {
+        if (isFull())
+        {
+            doubleArray();
+        }
+        for (int i = lastIndex; i >= index; i--)
+        {
+            ptr[i + 1] = ptr[i];
+        }
+        ptr[index] = data;
+        lastIndex++;
+    }
 }
