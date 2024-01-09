@@ -11,6 +11,7 @@ private:
 public:
     DynArray(int);
     void doubleArray();
+    void halfArray();
     bool isEmpty();
     bool isFull();
     void append(int);
@@ -96,5 +97,14 @@ void DynArray::doubleArray()
     }
     delete[] ptr;
     ptr = temp;
-    capacity=capacity*2;
+    capacity = capacity * 2;
+}
+
+void DynArray::halfArray(){
+    int *temp=new int[capacity/2];
+    for (int i=0;i<=lastIndex;i++){
+        temp[i]=ptr[i];
+    }
+    ptr=temp;
+    capacity/=2;
 }
