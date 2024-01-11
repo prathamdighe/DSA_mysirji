@@ -149,3 +149,28 @@ void DynArray::insert(int index, int data)
         lastIndex++;
     }
 }
+
+void DynArray::del(int index)
+{
+
+    if (isEmpty())
+    {
+        cout << "Array is empty";
+    }
+    else if (index > lastIndex || index < 0)
+    {
+        cout << "invalid index";
+    }
+    else
+    {
+        for (int i = index; i < lastIndex; i++)
+        {
+            ptr[i] = ptr[i + 1];
+        }
+        lastIndex--;
+        if (capacity / 2 >= lastIndex + 1 && capacity > 1) // boundary situation  >=  && capacity >1
+        {
+            halfArray();
+        }
+    }
+}
