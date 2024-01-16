@@ -157,24 +157,3 @@ Array::~Array()
     delete[] ptr;
 }
 
-int main()
-{
-    Array obj(5);
-    if (obj.isEmpty())
-        cout
-            << "array is empty" << endl;
-
-    obj.append(20);
-    obj.append(40);
-    obj.append(60);
-    obj.insert(1, 30);
-
-    obj.printArray();
-
-    obj.del(2);
-    obj.printArray();
-
-    cout
-        << endl;
-    return 0;
-}
