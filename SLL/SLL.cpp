@@ -1,5 +1,5 @@
 #include <iostream>
-#include<stdio.h>
+#include <stdio.h>
 using namespace std;
 
 struct node
@@ -17,7 +17,10 @@ public:
     SLL();
     void insertAtStart(int);
     void insertAtEnd(int);
-    node *search(int);// node is return type
+    node *search(int); // node is return type
+    void insertAfter(node, int)
+    {
+    }
     ~SLL();
 };
 
@@ -55,14 +58,24 @@ void SLL::insertAtEnd(int data)
     }
 }
 
-node * SLL::search(int data){
-    node*t=start;
-    while (t!=NULL){
-        if(t->item==data){
+void SLL::insertAfter(node *ptr, int data)
+{
+    node *n = new node;
+    n->item = data;
+    n->next = ptr->next;
+    ptr->next = n;
+}
+
+node *SLL::search(int data)
+{
+    node *t = start;
+    while (t != NULL)
+    {
+        if (t->item == data)
+        {
             return t;
         }
-        t=t->next;
-
+        t = t->next;
     }
     return t;
 }
