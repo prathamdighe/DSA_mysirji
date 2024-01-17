@@ -15,6 +15,7 @@ private:
 public:
     SLL();
     void insertAtStart(int);
+    void insertAtEnd(int);
     ~SLL();
 };
 
@@ -29,6 +30,26 @@ SLL::insertAtStart(int data)
     n->item = data;
     n->next = start; // basically address of node which start was pointing to the node
     start = n;
+}
+SLL::insertAtEnd(int data)
+{
+    node *t = start;
+    node *n = new node;
+    n->item = data;
+    n->next = NULL; // need since it will have a garbage value
+
+    if (start == nullptr)
+    {
+        start = n;
+    }
+    else
+    {
+        whlie(t->next != nullptr)
+        {
+            t = t->next;
+        }
+        t->next = n;
+    }
 }
 
 SLL::~SLL()
