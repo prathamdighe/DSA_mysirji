@@ -16,6 +16,7 @@ public:
     SLL();
     void insertAtStart(int);
     void insertAtEnd(int);
+    node *search(int);// node is return type
     ~SLL();
 };
 
@@ -24,14 +25,15 @@ SLL::SLL()
     start = nullptr; // if writing NULL we need to include stdio.h
 }
 
-SLL::insertAtStart(int data)
+void SLL::insertAtStart(int data)
 {
     node *n = new node;
     n->item = data;
     n->next = start; // basically address of node which start was pointing to the node
     start = n;
 }
-SLL::insertAtEnd(int data)
+
+void SLL::insertAtEnd(int data)
 {
     node *t = start;
     node *n = new node;
@@ -50,6 +52,18 @@ SLL::insertAtEnd(int data)
         }
         t->next = n;
     }
+}
+
+node * SLL::search(int data){
+    node*t=start;
+    while (t!=NULL){
+        if(t->item==data){
+            return t;
+        }
+        t=t->next;
+
+    }
+    return t;
 }
 
 SLL::~SLL()
