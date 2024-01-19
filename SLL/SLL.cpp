@@ -18,9 +18,9 @@ public:
     void insertAtStart(int);
     void insertAtEnd(int);
     node *search(int); // node is return type
-    void insertAfter(node, int)
-    {
-    }
+    void insertAfter(node, int);
+    void deleteFirst();
+    void deleteLast();
     ~SLL();
 };
 
@@ -58,13 +58,6 @@ void SLL::insertAtEnd(int data)
     }
 }
 
-void SLL::insertAfter(node *ptr, int data)
-{
-    node *n = new node;
-    n->item = data;
-    n->next = ptr->next;
-    ptr->next = n;
-}
 
 node *SLL::search(int data)
 {
@@ -79,7 +72,47 @@ node *SLL::search(int data)
     }
     return t;
 }
+void SLL::insertAfter(node *ptr, int data)
+{
+    node *n = new node;
+    n->item = data;
+    n->next = ptr->next;
+    ptr->next = n;
+}
 
+void SLL::deleteFirst()
+{
+    node *t;
+    if (start) // if start=Null will not run the code
+
+    {
+        t = start;
+        start = start->next;
+        delete t;
+    }
+}
+void SLL::deleteLast()
+{
+    node *t;
+    if(start==NULL){
+        cout<<"list Empty";
+    }
+    else if (start->next==NULL)
+    {
+        delete start;
+        start=NULL;
+    }
+    else{
+        t=start;
+        while(t->next->next!=NULL){
+            t=t->next;
+
+        }
+        delete t->next;
+        t->next=NULL;
+    }
+    
+}
 SLL::~SLL()
 {
 }
