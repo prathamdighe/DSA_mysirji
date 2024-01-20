@@ -22,7 +22,7 @@ public:
     void deleteFirst();
     void deleteLast();
     --void deleteNode(node *);
-    ~SLL();
+    ~SLL()
 };
 
 SLL::SLL()
