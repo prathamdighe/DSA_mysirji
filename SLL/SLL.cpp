@@ -20,8 +20,8 @@ public:
     node *search(int); // node is return type
     void insertAfter(node *, int);
     void deleteFirst();
-    void deleteLast();--
-    void deleteNode(node *);
+    void deleteLast();
+    --void deleteNode(node *);
     ~SLL();
 };
 
@@ -59,7 +59,6 @@ void SLL::insertAtEnd(int data)
     }
 }
 
-
 node *SLL::search(int data)
 {
     node *t = start;
@@ -95,52 +94,61 @@ void SLL::deleteFirst()
 void SLL::deleteLast()
 {
     node *t;
-    if(start==NULL){
-        cout<<"list Empty";
+    if (start == NULL)
+    {
+        cout << "list Empty";
     }
-    else if (start->next==NULL)
+    else if (start->next == NULL)
     {
         delete start;
-        start=NULL;
+        start = NULL;
     }
-    else{
-        t=start;
-        while(t->next->next!=NULL){
-            t=t->next;
-
+    else
+    {
+        t = start;
+        while (t->next->next != NULL)
+        {
+            t = t->next;
         }
         delete t->next;
-        t->next=NULL;
+        t->next = NULL;
     }
-    
 }
 
-void SLL::deleteNode(node*temp){
+void SLL::deleteNode(node *temp)
+{
     node *t;
-    if(start==NULL){
-        cout<<"list is empty";
+    if (start == NULL)
+    {
+        cout << "list is empty";
     }
-    else{
-        if(temp)//if temp null it will not run
+    else
+    {
+        if (temp) // if temp null it will not run
         {
-            if(start==temp){
+            if (start == temp)
+            {
                 delete start;
-                start=NULL;
+                start = NULL;
             }
-            else{
-                t=start;
-                while(t->next!=temp){
-                    t=t->next;
+            else
+            {
+                t = start;
+                while (t->next != temp)
+                {
+                    t = t->next;
                 }
-                t->next=temp->next;
+                t->next = temp->next;
                 delete temp;
             }
-
         }
     }
-
 }
 
 SLL::~SLL()
 {
+    while (start)
+    {
+        deleteFirst();
+    }
 }
