@@ -18,9 +18,10 @@ public:
     void insertAtStart(int);
     void insertAtEnd(int);
     node *search(int); // node is return type
-    void insertAfter(node, int);
+    void insertAfter(node *, int);
     void deleteFirst();
     void deleteLast();
+    void deleteNode(node *);
     ~SLL();
 };
 
@@ -113,6 +114,7 @@ void SLL::deleteLast()
     }
     
 }
+
 SLL::~SLL()
 {
 }
