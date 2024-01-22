@@ -4,14 +4,25 @@
 using namespace std;
 int main()
 {
-    ExtendArray obj(5);
+    ExtendArray obj(7);
     obj.append(20);
     // calling from the parent class
     obj.append(40);
     obj.append(60);
     obj.append(0);
+    obj.append(20);
+    obj.append(60);
+    obj.append(0);
+    obj.removeDuplicate();
+    
 
-    cout << "Greatsest element is " << obj.greatest();
+    obj.printArray();
+    cout<<endl<<obj.secondLargest();
+
+    cout<<endl<<obj.count();
+    
+
+    cout <<endl<< "Greatsest element is " << obj.greatest();
 
     cout << endl;
     return 0;
