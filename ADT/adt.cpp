@@ -156,4 +156,3 @@ Array::~Array()
 {
     delete[] ptr;
 }
-

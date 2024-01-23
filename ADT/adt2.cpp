@@ -3,7 +3,6 @@
 class ExtendArray : public Array
 {
 public:
-    ExtendArray(int);
     int greatest();
     void sort();
     int smallest();
@@ -13,9 +12,7 @@ public:
     void removeDuplicate();
     int secondLargest();
 };
-ExtendArray::ExtendArray(int cap) : Array(cap)
-{
-}
+
 int ExtendArray::greatest() // removed Array obj since it is now child class
 {
     int max;
@@ -52,6 +49,7 @@ void ExtendArray::sort()
         }
     }
 }
+
 int ExtendArray::secondLargest()
 {
     if (count() >= 2)
@@ -125,6 +123,7 @@ void ExtendArray::rotateRightByOne()
         edit(0, temp);
     }
 }
+
 void ExtendArray::removeDuplicate()
 {
     for (int i = 0; i < count(); i++)
