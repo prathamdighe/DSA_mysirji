@@ -23,6 +23,7 @@ public:
     void deleteFirst();
     void deleteLast();
     void deleteNode(node *);
+    ~DLL()
 };
 
 DLL::DLL()
@@ -125,12 +126,41 @@ void DLL::deleteLast()
         {
             temp = temp->next;
         }
-        temp->prev->next = NULL;
+        if (temp->prev)
+        {
+            temp->prev->next = NULL;
+        }
+
+        else
+        {
+            start = NULL;
+        }
         delete temp;
     }
 }
 
-void DLL::deleteNode(node *);{
+void DLL::deleteNode(node *temp);
+{
 
-    
+    if (temp->prev != NULL)
+    {
+        temp->prev->next = temp->next;
+    }
+    else
+    {
+        temp = temp->next;
+    }
+    if (temp->next != NULL)
+    {
+        temp->next->prev = temp->prev;
+    }
+    delete temp;
+}
+
+DLL::~DLL()
+{
+    while (start != NULL)
+    {
+        deleteFirst();
+    }
 }
