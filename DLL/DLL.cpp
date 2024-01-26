@@ -18,7 +18,11 @@ public:
     DLL();
     void insertAtStart(int);
     void insertAtLast(int);
-    node *search(int)
+    node *search(int);
+    void insertAfter(node *, int);
+    void deleteFirst();
+    void deleteLast();
+    void deleteNode(node *);
 };
 
 DLL::DLL()
@@ -64,7 +68,7 @@ void DLL::insertAtLast(int data)
     }
 }
 
-node *search(int data)
+node *DLL::search(int data)
 {
     node *t;
     t = start;
@@ -80,4 +84,53 @@ node *search(int data)
         }
     }
     return t;
+}
+
+void DLL::insertAfter(node *temp, int data)
+{
+
+    node *n = new node;
+    n->item = data;
+    n->prev = temp;
+    n->next = temp->next;
+    if (temp->next != NULL)
+    {
+        temp->next->prev = n;
+    }
+    temp->next = n;
+}
+
+void DLL::deleteFirst()
+{
+
+    if (start)
+    {
+        node *temp = start;
+        start = start->next;
+        if (temp->next != NULL)
+        {
+            start->prev = NULL;
+        }
+        delete temp;
+    }
+}
+
+void DLL::deleteLast()
+{
+
+    if (start)
+    {
+        node *temp = start;
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        temp->prev->next = NULL;
+        delete temp;
+    }
+}
+
+void DLL::deleteNode(node *);{
+
+    
 }
