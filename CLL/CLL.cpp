@@ -21,6 +21,8 @@ public:
     void insertAfter(node *, int);
     void deleteFirst();
     void deleteLast();
+    void deleteNode(node *);
+    ~CLL()
 };
 CLL::CLL()
 {
@@ -117,25 +119,77 @@ void CLL::deleteFirst()
 void CLL::deleteLast()
 {
 
+    // if (last != NULL)
+    // {
+    //     node *t;
+    //     if (last == last->next)
+    //     {
+    //         t = last;
+    //         last = NULL;
+    //     }
+    //     else
+    //     {
+    //         node *temp = last;
+    //         while (temp->next != last)
+    //         {
+    //             temp = temp->next;
+    //         }
+    //         temp->next = last->next;
+    //         t = last;
+    //         last = temp;
+    //     }
+    //     delete t;
+    // }
     if (last != NULL)
     {
         node *t;
-        if (last == last->next)
+        while (t->next != Last)
         {
-            t = last;
+            t = t->next;
+        }
+        if (t == last)
+        {
+            delete last;
             last = NULL;
         }
         else
         {
-            node *temp = last;
-            while (temp->next != last)
-            {
-                temp = temp->next;
-            }
-            temp->next = last->next;
-            t = last;
-            last = temp;
+            t->next = last->next;
+            delete last;
+            last = t;
         }
-        delete t;
+    }
+}
+
+void CLL::deleteNode(node *temp)
+{
+    if (temp != NULL)
+    {
+        node *t;
+        t = last->next;
+        while (t->next != temp)
+        {
+            t = t->next;
+        }
+        t->next = temp->next;
+        if (t == temp) // single node
+        {
+
+            last = NULL;
+        }
+
+        else if (temp == last)
+        {
+            last = t;
+        }
+        delete temp;
+    }
+}
+
+CLL::~CLL()
+{
+    while (last != NULL)
+    {
+        deleteFirst();
     }
 }
