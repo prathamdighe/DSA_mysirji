@@ -78,8 +78,8 @@ node *CLL::search(int data)
             }
 
         } while (t != last);
-        return NULL;
-    }
+        
+    }return NULL;
 }
 
 void CLL::insertAfter(node *temp, int data)
@@ -142,7 +142,7 @@ void CLL::deleteLast()
     // }
     if (last != NULL)
     {
-        node *t;
+        node *t=last;
         while (t->next != last)
         {
             t = t->next;
