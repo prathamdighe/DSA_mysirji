@@ -23,12 +23,12 @@ public:
     void deleteFirst();
     void deleteLast();
     void deleteNode(node *);
-    ~DLL()
+    ~DLL();
 };
 
 DLL::DLL()
 {
-    start = NULL:
+    start = NULL;
 }
 
 void DLL::insertAtStart(int data)
@@ -49,7 +49,7 @@ void DLL::insertAtStart(int data)
 void DLL::insertAtLast(int data)
 {
 
-    node *t;
+    node *t=start;
     node *n = new node;
     n->item = data;
     n->next = NULL;
@@ -81,7 +81,7 @@ node *DLL::search(int data)
         }
         else
         {
-            t = t - next;
+            t = t ->next;
         }
     }
     return t;
@@ -139,7 +139,7 @@ void DLL::deleteLast()
     }
 }
 
-void DLL::deleteNode(node *temp);
+void DLL::deleteNode(node *temp)
 {
 
     if (temp->prev != NULL)

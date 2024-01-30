@@ -6,7 +6,7 @@ struct node
 {
     int item;
     node *next;
-}
+};
 
 class SLL
 {
@@ -21,8 +21,8 @@ public:
     void insertAfter(node *, int);
     void deleteFirst();
     void deleteLast();
-    --void deleteNode(node *);
-    ~SLL()
+    void deleteNode(node *);
+    ~SLL();
 };
 
 SLL::SLL()
@@ -51,7 +51,7 @@ void SLL::insertAtEnd(int data)
     }
     else
     {
-        whlie(t->next != nullptr)
+        while (t->next != NULL)
         {
             t = t->next;
         }

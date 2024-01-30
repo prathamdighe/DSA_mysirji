@@ -22,7 +22,7 @@ public:
     void deleteFirst();
     void deleteLast();
     void deleteNode(node *);
-    ~CLL()
+    ~CLL();
 };
 CLL::CLL()
 {
@@ -143,7 +143,7 @@ void CLL::deleteLast()
     if (last != NULL)
     {
         node *t;
-        while (t->next != Last)
+        while (t->next != last)
         {
             t = t->next;
         }
