@@ -68,7 +68,7 @@ int ExtendArray::secondLargest()
         }
         return get(count() - 2); // for the second last number;
     }
-    return NULL; // wrong need to update
+    return -1; // wrong need to update
 }
 
 int ExtendArray::smallest()

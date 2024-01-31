@@ -19,6 +19,8 @@ public:
     void insertAtStart(int);
     void insertAtLast(int);
     node *search(int);
+    void insertAfter(node *, int);
+    void deleteFirst();
 };
 
 CDLL::CDLL()
@@ -85,4 +87,36 @@ node *CDLL::search(int data)
         } while (t != start);
     }
     return NULL;
+}
+
+void CDLL::insertAfter(node *temp, int data)
+{
+
+    if (temp != NULL)
+    {
+        node *n = new node;
+        n->item = data;
+        n->prev = temp;
+        n->next = temp->next;
+        temp->next->prev = n;
+        temp->next = n;
+    }
+}
+
+void CDLL::deleteFirst()
+{
+    if (start != NULL)
+    {
+        node *temp=start;
+        if (temp != start)
+        {
+            start->next->prev = start->prev;
+            start->prev->next = start->next;
+        }
+        else
+        {
+            start = NULL;
+        }
+        delete temp;
+    }
 }
