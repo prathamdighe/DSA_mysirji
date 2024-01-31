@@ -107,7 +107,7 @@ void CDLL::deleteFirst()
 {
     if (start != NULL)
     {
-        node *temp=start;
+        node *temp = start;
         if (temp != start)
         {
             start->next->prev = start->prev;
