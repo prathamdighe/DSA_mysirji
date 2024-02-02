@@ -1,5 +1,6 @@
 #include "adt.cpp"
 
+
 class ExtendArray : public Array
 {
 public:

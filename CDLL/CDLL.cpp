@@ -21,6 +21,9 @@ public:
     node *search(int);
     void insertAfter(node *, int);
     void deleteFirst();
+    void deleteLast();
+    void deleteNode(node *);
+    ~CDLL();
 };
 
 CDLL::CDLL()
@@ -108,15 +111,65 @@ void CDLL::deleteFirst()
     if (start != NULL)
     {
         node *temp = start;
-        if (temp != start)
+        if (temp->next != start)
         {
-            start->next->prev = start->prev;
-            start->prev->next = start->next;
+            temp->next->prev = temp->prev;
+            temp->prev->next = temp->next;
+            start = temp->next;
         }
         else
         {
             start = NULL;
         }
         delete temp;
+    }
+}
+
+void CDLL::deleteLast()
+{
+    if (start)
+    {
+        node *temp = start->prev;
+        if (temp->prev == start)
+        {
+            start = NULL;
+        }
+        else
+        {
+            start->prev = temp->prev->next;
+            temp->prev->next = temp->next;
+        }
+        delete temp;
+    }
+}
+
+void CDLL::deleteNode(node *temp)
+{
+    if (temp != NULL)
+    {
+
+        if (start != start->next)
+        {
+            temp->prev->next = temp->next;
+            temp->next->prev = temp->prev;
+
+            if (start == temp)
+            {
+                start = temp->next;
+            }
+        }
+        else
+        {
+            start = NULL;
+        }
+        delete temp;
+    }
+}
+
+CDLL::~CDLL()
+{
+    while (start != NULL)
+    {
+        deleteFirst();
     }
 }
