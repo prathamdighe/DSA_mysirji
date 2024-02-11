@@ -22,6 +22,7 @@ public:
     void deleteFirst();
     void deleteLast();
     void deleteNode(node *);
+    node *getFirst();
     ~SLL();
 };
 
@@ -143,6 +144,11 @@ void SLL::deleteNode(node *temp)
             }
         }
     }
+}
+
+node *SLL::getFirst();
+{
+    return start;
 }
 
 SLL::~SLL()
