@@ -103,7 +103,7 @@ void Array::del(int index)
     {
         for (i = index; i < lastIndex; i++)
         {
-            ptr[index] = ptr[index + 1];
+            ptr[i] = ptr[i + 1];
         }
         lastIndex--;
     }
@@ -131,7 +131,7 @@ int Array::count()
 
 void Array::printArray()
 {
-    for (int i = 0; i < lastIndex; i++)
+    for (int i = 0; i <= lastIndex; i++)
     {
         cout
             << ptr[i] << " ";
