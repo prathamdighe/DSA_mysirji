@@ -1,4 +1,4 @@
-#include "ADT/adt.cpp"
+#include "/workspaces/DSA_mysirji/ADT/adt.cpp"
 #include <iostream>
 using namespace std;
 
@@ -9,6 +9,10 @@ public:
     void push(int);
     int peek();
     void pop();
+    virtual bool isEmpty();
+    virtual bool isFull();
+    ~Stack();
+    
 };
 
 Stack::Stack(int cap) : Array( cap)
@@ -45,3 +49,12 @@ void Stack::pop()
         del(count() - 1);
     }
 }
+
+bool Stack :: isEmpty(){
+    return Array::isEmpty();
+};
+bool Stack :: isFull(){
+    return Array::isFull();
+ };
+
+ Stack::~Stack(){};
