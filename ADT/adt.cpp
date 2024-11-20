@@ -10,6 +10,7 @@ private:
 
 public:
     Array(int cap);
+    Array(Array &);
     bool isEmpty();
     bool isFull();
     void append(int);
@@ -20,6 +21,8 @@ public:
     int count();
     int find(int);
     void printArray();
+    int getCapacity();
+    void operator=(Array &arr);
     ~Array(); // destructor
 };
 
@@ -29,6 +32,16 @@ Array::Array(int cap)
     lastIndex = -1;
     ptr = new int[cap];
 }
+Array::Array(Array &arr)
+{
+    capacity = arr.capacity;
+    lastIndex = arr.lastIndex;
+    ptr = new int[capacity];
+    for (int i = 0; i <= lastIndex; i++)
+    {
+        ptr[i] = arr.ptr[i];
+    }
+};
 
 bool Array::isEmpty()
 {
@@ -150,6 +163,27 @@ int Array::find(int data)
         }
     }
     return -1;
+}
+int Array::getCapacity()
+{
+    return capacity;
+};
+
+// deep copy.
+void Array::operator=(Array &arr)
+{
+    capacity = arr.getCapacity();
+    lastIndex = arr.lastIndex;
+    if (ptr != NULL)
+    {
+        delete[] ptr;
+    }
+
+    ptr = new int[capacity];
+    for (int i = 0; i <= lastIndex; i++)
+    {
+        ptr[i] = arr.ptr[i];
+    }
 }
 
 Array::~Array()

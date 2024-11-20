@@ -4,15 +4,17 @@ using namespace std;
 
 int main()
 {
+     Stack a(4);
 
-    Stack a(4);
+     a.push(10);
+     a.push(20);
+     a.push(30);
 
-    a.push(10);
-    a.push(20);
-    a.push(30);
+     cout << a.peek() << endl;
+     
 
-    cout <<a.peek()  ;
-    a.pop();
-    cout << a.peek() ;
-    return 0;
+     a.reverseStack(a); // Call the method using the object
+     cout << a.peek() << endl;
+
+     return 0;
 }
