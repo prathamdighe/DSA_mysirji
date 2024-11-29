@@ -18,67 +18,87 @@ public:
     ~Stack();
 };
 
-Stack::Stack(int cap) : Array(cap) {}
+Stack::Stack(int cap) : Array(cap)
+{
+}
 
 // Copy constructor using base class constructor
 Stack::Stack(Stack &S) : Array(S) {}
 
-void Stack::reverseStack(Stack &s) {
+void Stack::reverseStack(Stack &s)
+{
     Stack temp1(s.getCapacity());
     Stack temp2(s.getCapacity());
 
-    while (!s.isEmpty()) {
+    while (!s.isEmpty())
+    {
         temp1.push(s.peek());
         s.pop();
     }
 
-    while (!temp1.isEmpty()) {
+    while (!temp1.isEmpty())
+    {
         temp2.push(temp1.peek());
         temp1.pop();
     }
 
-    while (!temp2.isEmpty()) {
+    while (!temp2.isEmpty())
+    {
         s.push(temp2.peek());
         temp2.pop();
     }
 }
 
-int Stack::getStacksize() {
+int Stack::getStacksize()
+{
     return getCapacity();
 }
 
-void Stack::push(int data) {
-    if (isFull()) {
+void Stack::push(int data)
+{
+    if (isFull())
+    {
         cout << "Stack Overflow";
-    } else {
+    }
+    else
+    {
         append(data);
     }
 }
 
-int Stack::peek() {
-    if (!isEmpty()) {
+int Stack::peek()
+{
+    if (!isEmpty())
+    {
         return get(count() - 1);
-    } else {
+    }
+    else
+    {
         cout << "Stack empty";
         return -1;
     }
 }
 
-void Stack::pop() {
-    if (!isEmpty()) {
+void Stack::pop()
+{
+    if (!isEmpty())
+    {
         del(count() - 1);
     }
 }
 
-bool Stack::isEmpty() {
+bool Stack::isEmpty()
+{
     return Array::isEmpty();
 }
 
-bool Stack::isFull() {
+bool Stack::isFull()
+{
     return Array::isFull();
 }
 
-void Stack::operator=(Stack &s) {
+void Stack::operator=(Stack &s)
+{
     Array::operator=(s);
 }
 
