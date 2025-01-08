@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-class queue
+class Queue
 {
 private:
     int capacity;
@@ -9,28 +9,45 @@ private:
     int *ptr;
 
 public:
-    queue(int);
+    Queue(int);
     bool isFull();
     void insert(int);
+    bool isEmpty();
+};
 
-}
-
-queue::queue(int cap    )
+Queue::Queue(int cap)
 {
-
     capacity = cap;
     front = -1;
     rear = -1;
-    ptr = new capacity[data];
+    ptr = new capacity[cap];
 }
 
-bool queue::isFull(){
-    return front==0 && rear== cap-1 || rear+1==front;
+bool Queue::isFull()
+{
+    return front == 0 && rear == cap - 1 || rear + 1 == front;
 }
 
-void queue::insert(int data){
-    if(isFull()){
-        cout<< " queue is full";
+void Queue::insert(int data)
+{
+    if (isFull())
+    {
+        cout << " Queue is full";
     }
-    else{}
+    else if (isEmpty())
+    {
+        front = rear = 0;
+        ptr[rear] = data;
+    }
+    else if (rear == cap - 1)
+    {
+        rear = 0;
+        ptr[rear] = data;
+    }
+    else
+    {
+        ptr[rear] = data;
+    }
 }
+
+int 
