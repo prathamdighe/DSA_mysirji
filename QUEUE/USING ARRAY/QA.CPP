@@ -11,8 +11,10 @@ private:
 public:
     Queue(int);
     bool isFull();
-    void insert(int);
     bool isEmpty();
+    void insert(int);
+    int getfront();
+    int getrear();
 };
 
 Queue::Queue(int cap)
@@ -20,12 +22,16 @@ Queue::Queue(int cap)
     capacity = cap;
     front = -1;
     rear = -1;
-    ptr = new capacity[cap];
+    ptr = new int[cap];
 }
 
 bool Queue::isFull()
 {
-    return front == 0 && rear == cap - 1 || rear + 1 == front;
+    return front == 0 && rear == capacity - 1 || rear + 1 == front;
+}
+bool Queue::isEmpty()
+{
+    return rear == -1;
 }
 
 void Queue::insert(int data)
@@ -39,15 +45,23 @@ void Queue::insert(int data)
         front = rear = 0;
         ptr[rear] = data;
     }
-    else if (rear == cap - 1)
+    else if (rear + 1 == capacity)
     {
-        rear = 0;
+        rear = (rear + 1) % capacity; // basically keep the counter in range of cap.
         ptr[rear] = data;
     }
     else
     {
+        rear++;
         ptr[rear] = data;
     }
 }
 
-int 
+int getfront()
+{
+    return ptr[front];
+};
+int getrear()
+{
+    return ptr[rear];
+};
