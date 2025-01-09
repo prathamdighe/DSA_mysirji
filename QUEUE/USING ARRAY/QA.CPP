@@ -10,6 +10,7 @@ private:
 
 public:
     Queue(int);
+    Queue(Queue &Q);
     bool isFull();
     bool isEmpty();
     void insert(int);
@@ -26,6 +27,29 @@ Queue::Queue(int cap)
     front = -1;
     rear = -1;
     ptr = new int[cap];
+}
+Queue::Queue(Queue &Q)
+{ // deep copy constructor
+
+    capacity = Q.capacity;
+    front = Q.front;
+    rear = Q.rear;
+    ptr = new int[capacity];
+    int n = Q.count();
+    int i = front;
+    while (n != 0)
+    {
+        ptr[i] = Q.ptr[i]; // copying data
+        if (i == capacity - 1)
+        {
+            i = 0;
+        }
+        else
+        {
+            i++
+        }
+        n--;
+    }
 }
 
 bool Queue::isFull()
@@ -105,7 +129,7 @@ int Queue::count()
         }
         else
         {
-            return capacity - (front - rear + 1); //front is bigger than rear
+            return capacity - (front - rear + 1); // front is bigger than rear
         }
     }
 }
