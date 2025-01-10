@@ -11,7 +11,7 @@ private:
 public:
     Queue(int);
     Queue(Queue &Q);
-    bool isFull();
+    Queue &operator=(Queue &) bool isFull();
     bool isEmpty();
     void insert(int);
     int getfront();
@@ -34,6 +34,32 @@ Queue::Queue(Queue &Q)
     capacity = Q.capacity;
     front = Q.front;
     rear = Q.rear;
+    ptr = new int[capacity];
+    int n = Q.count();
+    int i = front;
+    while (n != 0)
+    {
+        ptr[i] = Q.ptr[i]; // copying data
+        if (i == capacity - 1)
+        {
+            i = 0;
+        }
+        else
+        {
+            i++
+        }
+        n--;
+    }
+}
+Queue::Queue &operator=(Queue &Q)
+{
+    capacity = Q.capacity;
+    front = Q.front;
+    rear = Q.rear;
+    if (ptr != null)
+    {
+        delete[] ptr;
+    }
     ptr = new int[capacity];
     int n = Q.count();
     int i = front;
