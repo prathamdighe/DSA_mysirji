@@ -90,6 +90,5 @@ int QueueLL::count()
         c++;
         t = t->next;
     }
-
     return c;
 }
