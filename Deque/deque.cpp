@@ -72,7 +72,7 @@ void Deque::deletefront()
     if (front != NULL)
     {
         temp = front;
-        if (front = rear)
+        if (front == rear)
         {
             front = rear = NULL;
         }
@@ -90,7 +90,7 @@ void Deque::deleterear()
     if (front != NULL)
     {
         temp = rear;
-        if (front = rear)
+        if (front == rear)
         {
             front = rear = NULL;
         }
