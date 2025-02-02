@@ -19,6 +19,10 @@ public:
     PriorityQueue();
     void insert(int, int);
     void del();
+    int highPriorityElement();
+    int highPriorityNo();
+    ~PriorityQueue();
+    isempty()
 };
 
 PriorityQueue::PriorityQueue()
@@ -56,6 +60,45 @@ void PriorityQueue::insert(int data, int pqn)
     }
 }
 
-void PriorityQueue::del(){
-    
+void PriorityQueue::del()
+{
+    node *temp;
+    if (start != NULL)
+    {
+        start = temp;
+        start = start->next;
+        delete temp;
+    }
+    else
+    {
+        cout << "already empty";
+    }
+}
+
+int PriorityQueue::highPriorityElement()
+{
+    if (start != NULL)
+    {
+        return start->item;
+    }
+    return -1;
+}
+
+int PriorityQueue::highPriorityNo()
+{
+    if (start != NULL)
+    {
+        return start->priority;
+    }
+    return -1;
+}
+
+PriorityQueue::~PriorityQueue() {
+    while(start!=null){
+        del();
+    }
+}
+
+bool PriorityQueue::isempty(){
+    return start==NULL;
 }
