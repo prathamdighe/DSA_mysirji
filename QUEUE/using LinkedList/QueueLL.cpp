@@ -20,6 +20,7 @@ public:
     node *getfront();
     node *getback();
     void del();
+    int count();
     ~QueueLL();
 };
 
