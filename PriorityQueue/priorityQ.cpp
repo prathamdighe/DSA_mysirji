@@ -22,7 +22,7 @@ public:
     int highPriorityElement();
     int highPriorityNo();
     ~PriorityQueue();
-    isempty()
+    bool isempty();
 };
 
 PriorityQueue::PriorityQueue()
