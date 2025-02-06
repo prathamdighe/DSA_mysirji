@@ -57,7 +57,7 @@ void Deque::insertrear(int data)
     n->next = NULL;
     if (front)
     {
-        rear->prev = n;
+        rear->next = n;
     }
     else
     {
