@@ -127,6 +127,19 @@ void BST::postorderRec(node *ptr) /*Traverse the left subtree. Traverse the righ
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 int main()
 {
     BST tree;
