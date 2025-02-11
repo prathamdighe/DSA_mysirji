@@ -17,6 +17,7 @@ protected:
     void preorderRec(node *);
     void inorderRec(node *);
     void postorderRec(node *);
+    node *deleteNode(node *ptr, int data);
 
 public:
     BST();
@@ -25,6 +26,8 @@ public:
     void preorder();
     void inorder();
     void postorder();
+    void del(int);
+    node *search(int);
 };
 
 BST::BST()
@@ -52,7 +55,7 @@ void BST::insert(int data)
     else
     {
         node *ptr = root;
-        while (true)
+        while (n->item != ptr->item)
         {
             if (data <= ptr->item)
             {
@@ -127,18 +130,96 @@ void BST::postorderRec(node *ptr) /*Traverse the left subtree. Traverse the righ
     }
 }
 
+void BST::del(int data)
+{
+    root = deleteNode(root, data);
+}
+node *BST::deleteNode(node *ptr, int data)
+{
 
+    if (ptr == NULL)
+    {
+        return NULL;
+    }
+    if (data < ptr->item)
+    {
+        ptr->left = deleteNode(ptr->left, data);
+    }
+    else if (data > ptr->item))
+        {
+            ptr->right = deleteNode(ptr->right, data);
+        }
+    else
+    {
+        // no child
+        if (ptr->left == NULL && ptr->right == NULL)
+        {
+            delete ptr;
+            return NULL;
+        }
+        // one child
+        else if (ptr->left == NULL || ptr->right == NULL)
+        {
+            node *child;
+            if (ptr->left != NULL)
+            {
+                child = ptr->left;
+            }
+            else
+            {
+                child = ptr->right;
+            }
+            delete ptr;
+            return child;
+        }
+        // Two child
+        else
+        {
+            node *parapred;
+            node *pred;
+            parapred = ptr;
+            pred = ptr->left;
+            while (pred->right != NULL)
+            {
+                parapred = pred;
+                pred = pred->right;
+            }
+            ptr->item = pred->item;
+            // Delete the predecessor node.
+            // If the predecessor is the immediate left child.
+            if (predParent == ptr)
+            {
+                ptr->left = deleteNode(ptr->left, pred->item);
+            }
+            else
+            {
+                predParent->right = deleteNode(predParent->right, pred->item);
+            }
+        }
+        return ptr;
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
+node *BST::search(int data)
+{
+    node *ptr = root;
+    while (ptr != NULL)
+    {
+        if (ptr->item == data)
+        {
+            return ptr;
+        }
+        if (ptr->item > data)
+        {
+            ptr = ptr->left;
+        }
+        else
+        {
+            ptr = ptr->right;
+        }
+    }
+    return ptr;
+}
 
 int main()
 {
