@@ -221,6 +221,14 @@ node *BST::search(int data)
     return ptr;
 }
 
+BST::~BST()
+{
+    while (root != NULL)
+    {
+        deleteNode(root, root->item);
+    }
+}
+
 int main()
 {
     BST tree;
