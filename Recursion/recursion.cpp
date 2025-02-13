@@ -45,3 +45,19 @@ void PrintOddNR(int n)
         PrintOddNR(n - 1);
     }
 }
+void PrintEvenN(int n)
+{
+    if (n > 0)
+    {
+        PrintEvenN(n - 1);
+        cout << " " << 2 * n;
+    }
+}
+void PrintEvenNR(int n)
+{
+    if (n > 0)
+    {
+        cout << " " << 2 * n;
+        PrintEvenN(n - 1);
+    }
+}
