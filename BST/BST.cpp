@@ -28,6 +28,7 @@ public:
     void postorder();
     void del(int);
     node *search(int);
+    ~BST();
 };
 
 BST::BST()
