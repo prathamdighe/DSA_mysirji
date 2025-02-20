@@ -6,6 +6,8 @@ class Recursion
 {
     void PrintN(int);
     void PrintNR(int);
+    void PrintOddN(int);
+    void PrintOddNR(int);
 };
 
 void Recursion::PrintN(int n)
@@ -18,7 +20,7 @@ void Recursion::PrintN(int n)
     }
 }
 
-void PrintNR(int n)
+void Recursion::PrintNR(int n)
 {
 
     if (n > 0)
@@ -28,7 +30,7 @@ void PrintNR(int n)
     }
 }
 
-void PrintOddN(int n)
+void Recursion::PrintOddN(int n)
 {
     if (n > 0)
     {
@@ -37,7 +39,7 @@ void PrintOddN(int n)
     }
 }
 
-void PrintOddNR(int n)
+void Recursion::PrintOddNR(int n)
 {
     if (n > 0)
     {
@@ -45,7 +47,7 @@ void PrintOddNR(int n)
         PrintOddNR(n - 1);
     }
 }
-void PrintEvenN(int n)
+void Recursion::PrintEvenN(int n)
 {
     if (n > 0)
     {
@@ -53,11 +55,47 @@ void PrintEvenN(int n)
         cout << " " << 2 * n;
     }
 }
-void PrintEvenNR(int n)
+void Recursion::PrintEvenNR(int n)
 {
     if (n > 0)
     {
         cout << " " << 2 * n;
         PrintEvenN(n - 1);
+    }
+}
+
+void Recursion::PrintSqn(int n)
+{
+    if (n > 0)
+    {
+        PrintSqn(n - 1);
+        cout << " " << n * n;
+    }
+}
+
+void Recursion::PrintSqnR(int n)
+{
+    if (n > 0)
+    {
+        cout << " " << n * n;
+        PrintSqnR(n - 1);
+    }
+}
+
+void Recursion::Printcube(int n)
+{
+    if (n > 0)
+    {
+
+        Printcube(n - 1);
+        cout << " " << n * n * n;
+    }
+}
+void Recursion::PrintcubeR(int n)
+{
+    if (n > 0)
+    {
+        cout << " " << n * n * n;
+        PrintcubeR(n - 1);
     }
 }
