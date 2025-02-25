@@ -60,13 +60,13 @@ void BST::insert(int data)
         {
             if (data <= ptr->item)
             {
-                if (ptr->left != NULL)
+                if (ptr->left != NULL)//check if empty to the left
                 {
-                    ptr = ptr->left;
+                    ptr = ptr->left; //go to left
                 }
                 else
                 {
-                    ptr->left = n;
+                    ptr->left = n; //empty then insert to left
                     break;
                 }
             }

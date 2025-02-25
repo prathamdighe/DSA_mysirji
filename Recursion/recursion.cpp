@@ -99,3 +99,70 @@ void Recursion::PrintcubeR(int n)
         PrintcubeR(n - 1);
     }
 }
+
+int SumofSq(int n)
+{
+    if (n == 0)
+    {
+        return 0;
+    }
+    return sumofSq(n - 1) + n * n;
+}
+
+int SumofNodd(int n)
+{
+    if (n == 1)
+    {
+        return 1;
+    }
+    return SumofNodd(n - 1) + 2 * n - 1;
+}
+
+int SumofNeven(int n)
+{
+    if (n == 1)
+    {
+        return 2;
+    }
+    return SumofNeven(n - 1) * 2 * n;
+}
+
+int factorial(int n)
+{
+    if (n == 0)
+    {
+        return 1;
+    }
+    return factorial(n - 1) * n;
+}
+
+int sumofdigits(int n)
+{
+    if (n == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        return sumofdigits(n / 10) + (n % 10);
+    }
+}
+
+void decimaltobinary(int n)
+{
+    if (n > 0)
+    {
+        dtob(n / 2);
+
+        printf("%d", n % 2);
+    }
+}
+
+int fib(int n)
+{
+    if (n == 0)
+    {
+        return 1;
+    }
+    return fib(n - 1) + fib(n - 2);
+}
