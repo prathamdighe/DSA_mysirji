@@ -13,6 +13,8 @@ public:
     void createGraph(int, int);
     void printGraph();
     void printAdjnodes(int);
+    bool isIsolated(int);
+    ~GM();
 };
 
 void GM::createGraph(int vno, int eno)
@@ -55,7 +57,7 @@ void GM::printGraph()
 }
 void GM::printAdjnodes(int v)
 {
-    if (v >= 0 && v <v_count)
+    if (v >= 0 && v < v_count)
     {
         for (int i = 0; i < v_count; i++)
         {
@@ -65,6 +67,32 @@ void GM::printAdjnodes(int v)
             }
         }
     }
+}
+bool GM::isIsolated(int v)
+{
+    bool flag = false;
+    if (v >= 0 && v < v_count)
+    {
+        for (int i = 0; i < v_count; i++)
+        {
+            if (adj[v][i] == 1)
+            {
+                return true;
+                break;
+            }
+        }
+    }
+    return flag;
+}
+
+GM::~GM()
+{
+
+    for (int i = 0; i < v_count; i++)
+    {
+        delete[] adj[i] // dels the start column of adjs
+    }
+    delete[] adj;
 }
 
 int main()
