@@ -148,7 +148,7 @@ int sumofdigits(int n)
     }
 }
 
-void decimaltobinary(int n)
+void dtob(int n)
 {
     if (n > 0)
     {
