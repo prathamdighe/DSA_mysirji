@@ -82,4 +82,5 @@ GL::createGraphL(int v)
 int main()
 {
     GL g;
+    g.createGraphL(6);
 }
