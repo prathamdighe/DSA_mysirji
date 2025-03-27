@@ -166,3 +166,23 @@ int fib(int n)
     }
     return fib(n - 1) + fib(n - 2);
 }
+
+int hcf(int a, int b)
+{
+    if (a == 0)
+    {
+        return b;
+    }
+    if (b == 0)
+    {
+        return a;
+    }
+    if (a > 0)
+    {
+        return hcf(a % b, b);
+    }
+    if (b > 0)
+    {
+        return hcf(a, b % a);
+    }
+}
