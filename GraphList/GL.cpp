@@ -37,6 +37,32 @@ public:
         n->next = start;
         start = n;
     }
+    void printlist()
+    {
+        node *t = start;
+        while (t != NULL)
+        {
+            cout << "(" << t->vertex, "," << t->item ")" << endl;
+            t->next;
+        }
+    }
+    void removeFirstNode()
+    {
+        node *n;
+        if (start != NULL)
+        {
+            start = n;
+            start = start->next;
+            delete n;
+        }
+    }
+    ~Adjlist()
+    {
+        while (start != null)
+        {
+            removeFirstNode()
+        }
+    }
 };
 
 class GL
@@ -48,6 +74,8 @@ private:
 public:
     GL();
     createGraphL(int);
+    printGraph()
+    ~GL();
 };
 
 GL::GL()
@@ -78,9 +106,21 @@ GL::createGraphL(int v)
         }
     }
 }
-
+GL::printGraph()
+{
+    for (int i = 0; i < v_count; i++)
+    {
+        cout << endl;
+        arr[i].printlist();
+    }
+}
+GL::~GL()
+{
+    delete[] arr;
+}
 int main()
 {
     GL g;
     g.createGraphL(6);
+    g.printGraph();
 }
