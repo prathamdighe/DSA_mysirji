@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdio.h>
+#include "/workspaces/DSA_mysirji/DADT/DADT.cpp"
 using namespace std;
 
 class GM
@@ -10,9 +11,11 @@ private:
     int **adj;
 
 public:
+    int getv_count();
     void createGraph(int, int);
     void printGraph();
     void printAdjnodes(int);
+    DynArray& adjnodes(int);
     bool isIsolated(int);
     ~GM();
 };
@@ -42,6 +45,25 @@ void GM::createGraph(int vno, int eno)
         adj[v][u] = 1;
     }
 }
+int GM::getv_count()
+{
+    return v_count;
+}
+DynArray& GM::adjnodes(int n){
+    DynArray *p=new DynArray(1);
+    if (n >= 0 && n < v_count)
+    {
+        for (int i = 0; i < v_count; i++)
+        {
+            if (adj[n][i] == 1)
+            {
+                p->append(i);
+            }
+        }
+    }
+    return *p;
+    
+}
 
 void GM::printGraph()
 {
@@ -68,7 +90,7 @@ void GM::printAdjnodes(int v)
         }
     }
 }
-bool GM::isIsolated(int v)
+bool GM::isIsolated(int v) // isolated(false) till an adj edge found.
 {
     bool flag = false;
     if (v >= 0 && v < v_count)
@@ -93,13 +115,4 @@ GM::~GM()
         delete[] adj[i] // dels the start column of adjs
     }
     delete[] adj;
-}
-
-int main()
-{
-    GM G;
-    G.createGraph(5, 6);
-    G.printGraph();
-    G.printAdjnodes(2);
-    return 0;
 }

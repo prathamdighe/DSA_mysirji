@@ -11,7 +11,8 @@ private:
 public:
     Queue(int);
     Queue(Queue &Q);
-    Queue &operator=(Queue &); bool isFull();
+    Queue &operator=(Queue &);
+    bool isFull();
     bool isEmpty();
     void insert(int);
     int getfront();
