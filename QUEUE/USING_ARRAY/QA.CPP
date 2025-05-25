@@ -19,7 +19,7 @@ public:
     int getrear();
     void del();
     int count();
-    ~Queue()
+    ~Queue();
 };
 
 Queue::Queue(int cap)
@@ -47,17 +47,18 @@ Queue::Queue(Queue &Q)
         }
         else
         {
-            i++
+            i++;
         }
         n--;
     }
 }
-Queue::Queue &operator=(Queue &Q)
+Queue &Queue::operator=(Queue &Q)
+
 {
     capacity = Q.capacity;
     front = Q.front;
     rear = Q.rear;
-    if (ptr != null)
+    if (ptr != nullptr)
     {
         delete[] ptr;
     }
@@ -73,10 +74,11 @@ Queue::Queue &operator=(Queue &Q)
         }
         else
         {
-            i++
+            i++;
         }
         n--;
-    }
+    }return *this;
+
 }
 
 bool Queue::isFull()
@@ -144,7 +146,7 @@ void Queue::del()
 int Queue::count()
 {
 
-    if (isEmpty)
+    if (isEmpty())
     {
         return -1;
     }

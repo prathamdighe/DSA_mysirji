@@ -15,7 +15,7 @@ public:
     void createGraph(int, int);
     void printGraph();
     void printAdjnodes(int);
-    DynArray& adjnodes(int);
+    DynArray &adjnodes(int);
     bool isIsolated(int);
     ~GM();
 };
@@ -49,8 +49,9 @@ int GM::getv_count()
 {
     return v_count;
 }
-DynArray& GM::adjnodes(int n){
-    DynArray *p=new DynArray(1);
+DynArray &GM::adjnodes(int n)
+{
+    DynArray *p = new DynArray(1);
     if (n >= 0 && n < v_count)
     {
         for (int i = 0; i < v_count; i++)
@@ -62,7 +63,6 @@ DynArray& GM::adjnodes(int n){
         }
     }
     return *p;
-    
 }
 
 void GM::printGraph()
@@ -112,7 +112,7 @@ GM::~GM()
 
     for (int i = 0; i < v_count; i++)
     {
-        delete[] adj[i] // dels the start column of adjs
+        delete[] adj[i]; // dels the start column of adjs
     }
     delete[] adj;
 }
